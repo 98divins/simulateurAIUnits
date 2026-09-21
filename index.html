@@ -24,7 +24,7 @@
 </helmet>
 <div style="min-height:100vh; display:flex; flex-direction:column;">
   <header style="background:#101550; color:#FFFFFF; padding:22px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
-    <div style="display:flex; align-items:center; gap:24px;"><img src="assets/sqorus-logo-white.svg" alt="SQORUS" style="width:120px; height:auto;"><div><div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#FFB84B;">ORACLE FUSION HCM</div><h1 style="font-size:22px; font-weight:600; margin:0;">Simulateur AI Units</h1></div></div>
+    <div style="display:flex; align-items:center; gap:24px;"><img src="assets/sqorus-logo-white.svg" alt="SQORUS" style="width:120px; height:auto;"><div><div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#FFB84B;">ORACLE FUSION HCM</div><h1 style="font-size:22px; font-weight:600; margin:0; color:#FFFFFF;">Simulateur AI Units</h1></div></div>
     <div style="font-size:13px; font-weight:300; color:#EFF2FF;">Formule contractuelle · Table 1 effective 10 sept. 2026</div>
   </header>
   <div style="background:#FCF3DF; border-bottom:1px solid #F2DFB4; padding:12px 40px; font-size:14px; font-weight:400; color:#5C3A00; line-height:1.45;">Outil pédagogique SQORUS basé sur la formule contractuelle Oracle.</div>
@@ -34,9 +34,9 @@
     <section style="display:flex; flex-direction:column; gap:20px;">
       <div style="background:#FFFFFF; border:1px solid #E7E2DC; border-radius:12px; box-shadow:0 1px 4px rgba(16,21,80,0.08); padding:24px; display:flex; flex-direction:column; gap:22px;">
         <div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#F36145;">1. VOLUMÉTRIE</div>
-        <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Utilisateurs actifs par jour</span><span style="font-weight:800;">{{ usersLabel }}</span></span><input type="range" min="10" max="20000" step="10" value="{{ users }}" onChange="{{ setUsers }}"></label>
-        <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Sessions par utilisateur et par jour</span><span style="font-weight:800;">{{ sessionsLabel }}</span></span><input type="range" min="0.1" max="10" step="0.1" value="{{ sessions }}" onChange="{{ setSessions }}"></label>
-        <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Environnements de production</span><span style="font-weight:800;">{{ prods }}</span></span><input type="range" min="1" max="10" step="1" value="{{ prods }}" onChange="{{ setProds }}"></label>
+        <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Utilisateurs actifs par jour</span><input type="number" min="1" step="1" value="{{ users }}" onChange="{{ setUsers }}" style="font-family:inherit; font-size:14px; font-weight:800; color:#101550; width:110px; padding:6px 8px; border:1px solid #D9D2C9; border-radius:6px; text-align:right; background:#FFFFFF;"></span><input type="range" min="10" max="20000" step="10" value="{{ users }}" onChange="{{ setUsers }}"></label>
+        <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Sessions par utilisateur et par jour</span><input type="number" min="0.1" step="0.1" value="{{ sessions }}" onChange="{{ setSessions }}" style="font-family:inherit; font-size:14px; font-weight:800; color:#101550; width:110px; padding:6px 8px; border:1px solid #D9D2C9; border-radius:6px; text-align:right; background:#FFFFFF;"></span><input type="range" min="0.1" max="10" step="0.1" value="{{ sessions }}" onChange="{{ setSessions }}"></label>
+        <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Environnements de production</span><input type="number" min="1" step="1" value="{{ prods }}" onChange="{{ setProds }}" style="font-family:inherit; font-size:14px; font-weight:800; color:#101550; width:110px; padding:6px 8px; border:1px solid #D9D2C9; border-radius:6px; text-align:right; background:#FFFFFF;"></span><input type="range" min="1" max="10" step="1" value="{{ prods }}" onChange="{{ setProds }}"></label>
       </div>
 
       <div style="background:#FFFFFF; border:1px solid #E7E2DC; border-radius:12px; box-shadow:0 1px 4px rgba(16,21,80,0.08); padding:24px; display:flex; flex-direction:column; gap:22px;">
@@ -48,11 +48,11 @@
             <button onClick="{{ setLlmPremium }}" style="font-family:inherit; font-size:14px; font-weight:600; padding:10px 12px; border-radius:6px; border:1px solid {{ llmPremiumBorder }}; background:{{ llmPremiumBg }}; color:{{ llmPremiumColor }}; cursor:pointer;">Premium</button>
             <button onClick="{{ setLlmByo }}" style="font-family:inherit; font-size:14px; font-weight:600; padding:10px 12px; border-radius:6px; border:1px solid {{ llmByoBorder }}; background:{{ llmByoBg }}; color:{{ llmByoColor }}; cursor:pointer;">BYO LLM</button>
           </div>
-          <div style="font-size:13px; font-weight:300; color:#63615E;">Facteurs appliqués — général : <strong style="font-weight:800; color:#101550;">{{ fGen }}×</strong> · génération de document : <strong style="font-weight:800; color:#101550;">{{ fDoc }}×</strong></div>
+          <div style="font-size:13px; font-weight:300; color:#63615E;">Facteurs appliqués : général <strong style="font-weight:800; color:#101550;">{{ fGen }}×</strong> sur {{ pctGen }} % des tokens · document <strong style="font-weight:800; color:#101550;">{{ fDoc }}×</strong> sur {{ pctDoc }} % · facteur moyen pondéré <strong style="font-weight:800; color:#101550;">{{ fAvg }}×</strong></div>
         </div>
         <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Répartition des actions</span><span style="font-weight:800;">{{ pctGen }} % général · {{ pctDoc }} % documents</span></span><input type="range" min="0" max="100" step="5" value="{{ pctGen }}" onChange="{{ setPctGen }}"></label>
         <div style="display:flex; flex-direction:column; gap:8px;">
-          <span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Tokens moyens par session</span><span style="font-weight:800;">{{ tokensLabel }}</span></span>
+          <span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Tokens moyens par session</span><input type="number" min="1000" step="1000" value="{{ tokens }}" onChange="{{ setTokens }}" style="font-family:inherit; font-size:14px; font-weight:800; color:#101550; width:110px; padding:6px 8px; border:1px solid #D9D2C9; border-radius:6px; text-align:right; background:#FFFFFF;"></span>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
             <button onClick="{{ presetMulti }}" style="font-family:inherit; font-size:13px; font-weight:600; padding:10px 12px; border-radius:6px; border:1px solid {{ presetMultiBorder }}; background:{{ presetMultiBg }}; color:{{ presetMultiColor }}; cursor:pointer; text-align:left; line-height:1.35;">Multi-agent Medium<br><span style="font-weight:300;">60 000 tokens ≈ 30 unités/session</span></button>
             <button onClick="{{ presetAgentic }}" style="font-family:inherit; font-size:13px; font-weight:600; padding:10px 12px; border-radius:6px; border:1px solid {{ presetAgenticBorder }}; background:{{ presetAgenticBg }}; color:{{ presetAgenticColor }}; cursor:pointer; text-align:left; line-height:1.35;">Agentic App Medium<br><span style="font-weight:300;">440 000 tokens ≈ 220 unités/session</span></button>
@@ -68,22 +68,33 @@
       <div style="background:#101550; border-radius:12px; padding:28px; color:#FFFFFF; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
         <div><div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#FFB84B;">COÛT / MOIS</div><div style="font-size:44px; font-weight:800; line-height:1.1; margin-top:8px;">{{ costMonth }}</div></div>
         <div><div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#FFB84B;">COÛT / AN</div><div style="font-size:44px; font-weight:800; line-height:1.1; margin-top:8px;">{{ costYear }}</div></div>
-        <div style="grid-column:1 / -1; font-size:13px; font-weight:300; color:#EFF2FF;">SKU B112536 — 0,01 $ par AI Unit facturable.</div>
+        <div style="grid-column:1 / -1; font-size:13px; font-weight:300; color:#EFF2FF;">SKU B112536 : 0,01 $ par AI Unit facturable.</div>
       </div>
       <div style="background:#FFFFFF; border:1px solid #E7E2DC; border-radius:12px; box-shadow:0 1px 4px rgba(16,21,80,0.08); padding:24px; display:flex; flex-direction:column; gap:0;">
         <div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#F36145; margin-bottom:12px;">DÉTAIL DU CALCUL</div>
-        <div style="display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid #E7E2DC; font-size:14px;"><span style="font-weight:300;">Sessions / mois <span style="color:#63615E;">(× 21,7 jours ouvrés)</span></span><span style="font-weight:800; color:#101550;">{{ sessionsMonth }}</span></div>
-        <div style="display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid #E7E2DC; font-size:14px;"><span style="font-weight:300;">AI Units par session <span style="color:#63615E;">(⌈tokens/10 000⌉ × facteur)</span></span><span style="font-weight:800; color:#101550;">{{ unitsPerSession }}</span></div>
-        <div style="display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid #E7E2DC; font-size:14px;"><span style="font-weight:300;">AI Units consommées / mois</span><span style="font-weight:800; color:#101550;">{{ unitsMonth }}</span></div>
-        <div style="display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid #E7E2DC; font-size:14px;"><span style="font-weight:300;">Quota offert <span style="color:#63615E;">(20 000 × {{ prods }} prod)</span></span><span style="font-weight:800; color:#101550;">− {{ quota }}</span></div>
-        <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0 0; font-size:16px;"><span style="font-weight:600; color:#101550;">AI Units facturables / mois</span><span style="font-weight:800; color:#F36145;">{{ billable }}</span></div>
+        <div style="display:grid; grid-template-columns:minmax(0,1fr) auto; gap:2px 16px; align-items:baseline; padding:12px 0; border-bottom:1px solid #E7E2DC;"><span style="font-size:14px; font-weight:600; color:#101550;">Sessions par mois</span><span style="font-size:15px; font-weight:800; color:#101550; text-align:right;">{{ sessionsMonth }}</span><span style="font-size:13px; font-weight:300; color:#63615E;">{{ fSessions }}</span></div>
+        <div style="display:grid; grid-template-columns:minmax(0,1fr) auto; gap:2px 16px; align-items:baseline; padding:12px 0; border-bottom:1px solid #E7E2DC;"><span style="font-size:14px; font-weight:600; color:#101550;">AI Units par session</span><span style="font-size:15px; font-weight:800; color:#101550; text-align:right;">{{ unitsPerSession }}</span><span style="font-size:13px; font-weight:300; color:#63615E;">{{ fUnits }}</span><span style="grid-column:1 / -1; font-size:12px; font-weight:300; color:#8C8984;">{{ fUnitsHint }}</span></div>
+        <div style="display:grid; grid-template-columns:minmax(0,1fr) auto; gap:2px 16px; align-items:baseline; padding:12px 0; border-bottom:1px solid #E7E2DC;"><span style="font-size:14px; font-weight:600; color:#101550;">AI Units consommées par mois</span><span style="font-size:15px; font-weight:800; color:#101550; text-align:right;">{{ unitsMonth }}</span><span style="font-size:13px; font-weight:300; color:#63615E;">{{ fUnitsMonth }}</span></div>
+        <div style="display:grid; grid-template-columns:minmax(0,1fr) auto; gap:2px 16px; align-items:baseline; padding:12px 0; border-bottom:1px solid #E7E2DC;"><span style="font-size:14px; font-weight:600; color:#101550;">Quota offert</span><span style="font-size:15px; font-weight:800; color:#101550; text-align:right;">- {{ quota }}</span><span style="font-size:13px; font-weight:300; color:#63615E;">{{ fQuota }}</span></div>
+        <div style="display:grid; grid-template-columns:minmax(0,1fr) auto; gap:2px 16px; align-items:baseline; padding:14px 0 0;"><span style="font-size:16px; font-weight:600; color:#101550;">AI Units facturables par mois</span><span style="font-size:18px; font-weight:800; color:#F36145; text-align:right;">{{ billable }}</span><span style="grid-column:1 / -1; font-size:13px; font-weight:300; color:#63615E;">{{ fBillable }}</span></div>
       </div>
       <div style="background:#FFFFFF; border:1px solid #E7E2DC; border-radius:12px; box-shadow:0 1px 4px rgba(16,21,80,0.08); padding:20px 24px; display:flex; flex-direction:column; gap:10px;">
         <div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#F36145;">QUOTA</div>
         <div style="height:10px; border-radius:999px; background:#EFF2FF; overflow:hidden;"><div style="height:100%; width:{{ quotaPct }}; background:{{ quotaColor }}; border-radius:999px;"></div></div>
         <div style="font-size:13px; font-weight:300; color:#63615E;">{{ quotaMessage }}</div>
       </div>
-      <div style="font-size:12px; font-weight:300; color:#63615E; line-height:1.5;">Facteurs : Oracle Fusion Service Descriptions, éd. 6 août 2026, Exhibit 1, Table 1 — modifiable par Oracle avec 30 jours de préavis. Le LLM Basique est à 0× sur les actions générales uniquement ; la génération de document reste facturée 10×.</div>
+      <div style="background:#FFFFFF; border:1px solid #E7E2DC; border-radius:12px; box-shadow:0 1px 4px rgba(16,21,80,0.08); padding:20px 24px; display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#F36145;">D'OÙ VIENNENT LES CONSTANTES</div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:6px 16px; font-size:13px; line-height:1.45;">
+          <span style="font-weight:800; color:#101550; white-space:nowrap;">10 000 tokens</span><span style="font-weight:300;">1 AI Unit de base = une tranche de 10 000 tokens, arrondie au supérieur [SD].</span>
+          <span style="font-weight:800; color:#101550; white-space:nowrap;">Facteurs ×</span><span style="font-weight:300;">Multiplicateur par classe de LLM et type d'action, Table 1 : Premium 5× général / 20× document ; Basique 0× / 10× ; BYO 3× / 10× [SD].</span>
+          <span style="font-weight:800; color:#101550; white-space:nowrap;">21,7 jours</span><span style="font-weight:300;">Jours ouvrés moyens par mois (260 / 12). Hypothèse SQORUS, à ajuster au calendrier client.</span>
+          <span style="font-weight:800; color:#101550; white-space:nowrap;">20 000 unités</span><span style="font-weight:300;">Quota mensuel offert par environnement de production [SD].</span>
+          <span style="font-weight:800; color:#101550; white-space:nowrap;">0,01 $</span><span style="font-weight:300;">Prix unitaire de l'AI Unit facturable, SKU B112536 [PL].</span>
+          <span style="font-weight:800; color:#101550; white-space:nowrap;">60 000 / 440 000 tokens</span><span style="font-weight:300;">Préréglages déduits de l'estimateur Oracle [EST] : il affiche ≈ 30 et ≈ 220 unités/session en Premium ; on remonte aux tokens en inversant la formule (30 ÷ 5 = 6 tranches = 60 000). Hypothèse de départ, à remplacer par la télémétrie du client.</span>
+        </div>
+      </div>
+      <div style="font-size:12px; font-weight:300; color:#63615E; line-height:1.5;">Facteurs : Oracle Fusion Service Descriptions, éd. 6 août 2026, Exhibit 1, Table 1, modifiable par Oracle avec 30 jours de préavis. Le LLM Basique est à 0× sur les actions générales uniquement ; la génération de document reste facturée 10×.</div>
     </section>
   </main>
   <footer style="padding:14px 40px; font-size:12px; font-weight:300; color:#63615E; border-top:1px solid #E7E2DC;">Confidentialité : Document confidentiel © SQORUS / Diffusion externe interdite</footer>
@@ -108,14 +119,21 @@ class Component extends DCLogic {
     const n = (v, d = 0) => v.toLocaleString('fr-FR', { maximumFractionDigits: d, minimumFractionDigits: d });
     const usd = (v) => n(v, 0) + ' $';
     const pct = quota > 0 ? Math.min(100, unitsMonth / quota * 100) : 100;
+    const fAvg = (unitsPerSession / Math.max(1, Math.ceil(s.tokens / 10000)));
+    const fSessions = `${n(s.users)} utilisateurs × ${n(s.sessions, 1)} sessions × 21,7 jours`;
+    const fUnits = `${incGen} tranches × ${f.gen} (général) + ${incDoc} tranches × ${f.doc} (documents)`;
+    const fUnitsHint = `${n(s.tokens)} tokens répartis ${s.pctGen} % / ${pctDoc} %, par tranches de 10 000 arrondies au supérieur`;
+    const fUnitsMonth = `${n(sessionsMonth)} sessions × ${n(unitsPerSession)} unités`;
+    const fQuota = `20 000 unités × ${s.prods} environnement(s) de production`;
+    const fBillable = `${n(unitsMonth)} - ${n(quota)} = ${n(billable)} unités × 0,01 $ = ${usd(costMonth)} / mois`;
     const btn = (on) => ({ border: on ? '#101550' : '#D9D2C9', bg: on ? '#101550' : '#FFFFFF', color: on ? '#FFFFFF' : '#101550' });
     const b = btn(s.llm === 'basic'), p = btn(s.llm === 'premium'), y = btn(s.llm === 'byo');
     const pm = btn(s.tokens === 60000), pa = btn(s.tokens === 440000);
-    const num = (k, parse = parseFloat) => (e) => this.setState({ [k]: parse(e.target.value) });
+    const num = (k, parse = parseFloat) => (e) => { const v = parse(e.target.value); if (!isNaN(v) && v > 0) this.setState({ [k]: v }); };
     return {
       users: s.users, usersLabel: n(s.users), sessions: s.sessions, sessionsLabel: n(s.sessions, 1), prods: s.prods,
       pctGen: s.pctGen, pctDoc, tokens: s.tokens, tokensLabel: n(s.tokens) + ' tokens',
-      fGen: f.gen, fDoc: f.doc,
+      fGen: f.gen, fDoc: f.doc, fAvg: n(fAvg, 1), fSessions, fUnits, fUnitsHint, fUnitsMonth, fQuota, fBillable,
       setUsers: num('users', parseInt), setSessions: num('sessions'), setProds: num('prods', parseInt), setPctGen: num('pctGen', parseInt), setTokens: num('tokens', parseInt),
       setLlmBasic: () => this.setState({ llm: 'basic' }), setLlmPremium: () => this.setState({ llm: 'premium' }), setLlmByo: () => this.setState({ llm: 'byo' }),
       presetMulti: () => this.setState({ tokens: 60000 }), presetAgentic: () => this.setState({ tokens: 440000 }),
@@ -127,7 +145,7 @@ class Component extends DCLogic {
       sessionsMonth: n(sessionsMonth), unitsPerSession: n(unitsPerSession), unitsMonth: n(unitsMonth), quota: n(quota), billable: n(billable),
       costMonth: usd(costMonth), costYear: usd(costMonth * 12),
       quotaPct: pct.toFixed(1) + '%', quotaColor: unitsMonth > quota ? '#F36145' : '#1B8AF3',
-      quotaMessage: unitsMonth > quota ? `Quota dépassé : ${n(unitsMonth / quota, 1)}× le volume offert.` : `${n(pct, 0)} % du quota offert consommé — aucune facturation.`
+      quotaMessage: unitsMonth > quota ? `Quota dépassé : ${n(unitsMonth / quota, 1)}× le volume offert.` : `${n(pct, 0)} % du quota offert consommé, aucune facturation.`
     };
   }
 }

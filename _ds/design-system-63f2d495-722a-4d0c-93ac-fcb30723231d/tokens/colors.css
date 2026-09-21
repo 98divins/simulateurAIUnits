@@ -1,0 +1,67 @@
+/* Thème SQORUS (template PPT juin 2025) sur sol neutre chaud Redwood.
+   Les 6 couleurs de marque (brand, brand-blue, sky, coral, orange, yellow) et les 3 tints
+   officiels sont figés — NE JAMAIS LES MODIFIER. Tout le reste (hover/active/bordures/ramps)
+   est dérivé en OKLCH à partir de ces couleurs, pour rester perceptuellement régulier. */
+:root {
+  /* ---- Palette SQORUS (thème Office) — FIGÉE ---- */
+  --brand: #101550;        /* marine SQORUS (accent6) */
+  --brand-blue: #343FC9;   /* bleu électrique (accent4) */
+  --sky: #1B8AF3;          /* bleu clair (accent3) */
+  --coral: #F36145;        /* corail (accent1) */
+  --orange: #F37637;       /* orangé (accent2) */
+  --yellow: #FFB84B;       /* jaune (accent5) */
+  --tint-blue: #EFF2FF;    /* lt1 */
+  --tint-cyan: #EBF6F8;    /* dk2 */
+  --tint-sand: #FCF3DF;    /* lt2 */
+
+  /* ---- Ramp dérivée : marine (--brand) — hover plus clair, active plus sombre ---- */
+  --brand-hover: oklch(from var(--brand) calc(l + 0.12) c h);
+  --brand-active: oklch(from var(--brand) calc(l - 0.06) c h);
+  --brand-tint: var(--tint-blue);
+
+  /* ---- Ramp dérivée : corail (--coral) ---- */
+  --coral-hover: oklch(from var(--coral) calc(l + 0.08) c h);
+  --coral-active: oklch(from var(--coral) calc(l - 0.09) c h);
+  --coral-tint: oklch(from var(--coral) 0.95 calc(c * 0.28) h);
+  --coral-border: oklch(from var(--coral) 0.85 calc(c * 0.42) h);
+
+  /* ---- Ramp dérivée : orangé (--orange) ---- */
+  --orange-tint: oklch(from var(--orange) 0.95 calc(c * 0.26) h);
+  --orange-border: oklch(from var(--orange) 0.85 calc(c * 0.4) h);
+
+  /* ---- Ramp dérivée : bleu électrique (--brand-blue) ---- */
+  --brand-blue-tint: var(--tint-blue);
+  --brand-blue-border: oklch(from var(--brand-blue) 0.85 calc(c * 0.32) h);
+
+  /* ---- Ramp dérivée : jaune (--yellow) ---- */
+  --yellow-tint: var(--tint-sand);
+  --yellow-border: oklch(from var(--yellow) 0.82 calc(c * 0.55) h);
+
+  /* ---- Sol Redwood ---- */
+  --ground: #FBFAF8; --ground-2: #F4F1ED; --surface: #FFFFFF;
+  --ink: #0D0D0D; --ink-2: #63615E;
+  --border: #E7E2DC; --border-strong: #D9D2C9;
+  --anthracite: #312D2A;   /* bouton primaire Redwood (référence historique, non utilisé — voir --brand) */
+
+  /* ---- Sémantique : statut ---- */
+  --ok: #2E7D32; --ok-tint: #E7F1E8; --ok-border: #BFDCC1;
+  --warn: #B36B00; --warn-text: #8A5400; /* --warn-text : variante plus sombre pour du texte courant (4.5:1) — --warn reste réservé aux libellés courts/UI (3:1) */
+  --warn-tint: #FCF3DF; --warn-border: #F2DFB4;
+  --bad: #F36145; --bad-tint: #FDEAE5; --bad-border: var(--coral-border);
+
+  /* ---- Rôles fonctionnels ---- */
+  --text-body: var(--ink); --text-muted: var(--ink-2);
+  --surface-card: var(--surface);
+  --focus-ring: var(--brand-blue);
+  --input-readonly-bg: #F0F0F0;
+  --banner-gradient-start: #FEF8EA;
+  --overlay-scrim: oklch(from var(--brand) l c h / 0.35);
+
+  /* ---- Rayons ---- */
+  --radius-xs: 4px; --radius-sm: 6px; --radius-md: 12px; --radius-lg: 16px; --radius-pill: 999px;
+
+  /* ---- Ombres (teintées marine, cohérentes avec le sol Redwood) ---- */
+  --shadow-card: 0 1px 4px rgba(16,21,80,0.08);
+  --shadow-pop: 0 8px 24px rgba(16,21,80,0.16);
+  --shadow-modal: 0 16px 48px rgba(16,21,80,0.24);
+}

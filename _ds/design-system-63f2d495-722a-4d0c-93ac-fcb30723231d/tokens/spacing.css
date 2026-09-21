@@ -1,0 +1,15 @@
+/* Échelle d'espacement — valeurs exactes déjà en usage dans le système (pas de calage forcé sur une grille 4/8px étrangère). */
+:root {
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 9px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7: 14px;
+  --space-8: 16px;
+  --space-9: 18px;
+  --space-10: 20px;
+  --space-11: 24px;
+  --space-12: 32px;
+}

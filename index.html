@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#101550"/><text x="100" y="122" text-anchor="middle" font-family="Open Sans,Arial,sans-serif" font-weight="800" font-size="64" fill="#F36145">AI</text></svg></template>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/design-system-63f2d495-722a-4d0c-93ac-fcb30723231d/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/design-system-63f2d495-722a-4d0c-93ac-fcb30723231d/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/design-system-63f2d495-722a-4d0c-93ac-fcb30723231d/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/design-system-63f2d495-722a-4d0c-93ac-fcb30723231d/tokens/components.css">
+  <link rel="stylesheet" href="_ds/design-system-63f2d495-722a-4d0c-93ac-fcb30723231d/styles.css">
+  <script src="_ds/design-system-63f2d495-722a-4d0c-93ac-fcb30723231d/_ds_bundle.js"></script>
+  <style>
+    body { margin:0; background:#FBFAF8; font-family:"Open Sans",Arial,sans-serif; color:#0D0D0D; }
+    a { color:#343FC9; } a:hover { color:#101550; }
+    input[type=range] { accent-color:#343FC9; width:100%; }
+    input[type=number] { font-family:inherit; }
+  </style>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column;">
+  <header style="background:#101550; color:#FFFFFF; padding:22px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+    <div style="display:flex; align-items:center; gap:24px;"><img src="assets/sqorus-logo-white.svg" alt="SQORUS" style="width:120px; height:auto;"><div><div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#FFB84B;">ORACLE FUSION HCM</div><h1 style="font-size:22px; font-weight:600; margin:0;">Simulateur AI Units</h1></div></div>
+    <div style="font-size:13px; font-weight:300; color:#EFF2FF;">Formule contractuelle · Table 1 effective 10 sept. 2026</div>
+  </header>
+  <div style="background:#FCF3DF; border-bottom:1px solid #F2DFB4; padding:12px 40px; font-size:14px; font-weight:400; color:#5C3A00; line-height:1.45;">Outil pédagogique SQORUS basé sur la formule contractuelle Oracle.</div>
+
+  <main style="flex:1; padding:32px 40px 48px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; max-width:1400px; width:100%; margin:0 auto; box-sizing:border-box;">
+    <!-- Inputs -->
+    <section style="display:flex; flex-direction:column; gap:20px;">
+      <div style="background:#FFFFFF; border:1px solid #E7E2DC; border-radius:12px; box-shadow:0 1px 4px rgba(16,21,80,0.08); padding:24px; display:flex; flex-direction:column; gap:22px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#F36145;">1. VOLUMÉTRIE</div>
+        <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Utilisateurs actifs par jour</span><span style="font-weight:800;">{{ usersLabel }}</span></span><input type="range" min="10" max="20000" step="10" value="{{ users }}" onChange="{{ setUsers }}"></label>
+        <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Sessions par utilisateur et par jour</span><span style="font-weight:800;">{{ sessionsLabel }}</span></span><input type="range" min="0.1" max="10" step="0.1" value="{{ sessions }}" onChange="{{ setSessions }}"></label>
+        <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Environnements de production</span><span style="font-weight:800;">{{ prods }}</span></span><input type="range" min="1" max="10" step="1" value="{{ prods }}" onChange="{{ setProds }}"></label>
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid #E7E2DC; border-radius:12px; box-shadow:0 1px 4px rgba(16,21,80,0.08); padding:24px; display:flex; flex-direction:column; gap:22px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#F36145;">2. PROFIL D'USAGE</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:14px; font-weight:600; color:#101550;">LLM utilisé</span>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
+            <button onClick="{{ setLlmBasic }}" style="font-family:inherit; font-size:14px; font-weight:600; padding:10px 12px; border-radius:6px; border:1px solid {{ llmBasicBorder }}; background:{{ llmBasicBg }}; color:{{ llmBasicColor }}; cursor:pointer;">Basique</button>
+            <button onClick="{{ setLlmPremium }}" style="font-family:inherit; font-size:14px; font-weight:600; padding:10px 12px; border-radius:6px; border:1px solid {{ llmPremiumBorder }}; background:{{ llmPremiumBg }}; color:{{ llmPremiumColor }}; cursor:pointer;">Premium</button>
+            <button onClick="{{ setLlmByo }}" style="font-family:inherit; font-size:14px; font-weight:600; padding:10px 12px; border-radius:6px; border:1px solid {{ llmByoBorder }}; background:{{ llmByoBg }}; color:{{ llmByoColor }}; cursor:pointer;">BYO LLM</button>
+          </div>
+          <div style="font-size:13px; font-weight:300; color:#63615E;">Facteurs appliqués — général : <strong style="font-weight:800; color:#101550;">{{ fGen }}×</strong> · génération de document : <strong style="font-weight:800; color:#101550;">{{ fDoc }}×</strong></div>
+        </div>
+        <label style="display:flex; flex-direction:column; gap:8px;"><span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Répartition des actions</span><span style="font-weight:800;">{{ pctGen }} % général · {{ pctDoc }} % documents</span></span><input type="range" min="0" max="100" step="5" value="{{ pctGen }}" onChange="{{ setPctGen }}"></label>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <span style="display:flex; justify-content:space-between; font-size:14px;"><span style="font-weight:600; color:#101550;">Tokens moyens par session</span><span style="font-weight:800;">{{ tokensLabel }}</span></span>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <button onClick="{{ presetMulti }}" style="font-family:inherit; font-size:13px; font-weight:600; padding:10px 12px; border-radius:6px; border:1px solid {{ presetMultiBorder }}; background:{{ presetMultiBg }}; color:{{ presetMultiColor }}; cursor:pointer; text-align:left; line-height:1.35;">Multi-agent Medium<br><span style="font-weight:300;">60 000 tokens ≈ 30 unités/session</span></button>
+            <button onClick="{{ presetAgentic }}" style="font-family:inherit; font-size:13px; font-weight:600; padding:10px 12px; border-radius:6px; border:1px solid {{ presetAgenticBorder }}; background:{{ presetAgenticBg }}; color:{{ presetAgenticColor }}; cursor:pointer; text-align:left; line-height:1.35;">Agentic App Medium<br><span style="font-weight:300;">440 000 tokens ≈ 220 unités/session</span></button>
+          </div>
+          <input type="range" min="10000" max="1000000" step="10000" value="{{ tokens }}" onChange="{{ setTokens }}">
+          <div style="font-size:13px; font-weight:300; color:#63615E;">Préréglages calés sur l'estimateur Oracle (unités observées en LLM Premium, actions générales).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section style="display:flex; flex-direction:column; gap:20px;">
+      <div style="background:#101550; border-radius:12px; padding:28px; color:#FFFFFF; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div><div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#FFB84B;">COÛT / MOIS</div><div style="font-size:44px; font-weight:800; line-height:1.1; margin-top:8px;">{{ costMonth }}</div></div>
+        <div><div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#FFB84B;">COÛT / AN</div><div style="font-size:44px; font-weight:800; line-height:1.1; margin-top:8px;">{{ costYear }}</div></div>
+        <div style="grid-column:1 / -1; font-size:13px; font-weight:300; color:#EFF2FF;">SKU B112536 — 0,01 $ par AI Unit facturable.</div>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #E7E2DC; border-radius:12px; box-shadow:0 1px 4px rgba(16,21,80,0.08); padding:24px; display:flex; flex-direction:column; gap:0;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#F36145; margin-bottom:12px;">DÉTAIL DU CALCUL</div>
+        <div style="display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid #E7E2DC; font-size:14px;"><span style="font-weight:300;">Sessions / mois <span style="color:#63615E;">(× 21,7 jours ouvrés)</span></span><span style="font-weight:800; color:#101550;">{{ sessionsMonth }}</span></div>
+        <div style="display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid #E7E2DC; font-size:14px;"><span style="font-weight:300;">AI Units par session <span style="color:#63615E;">(⌈tokens/10 000⌉ × facteur)</span></span><span style="font-weight:800; color:#101550;">{{ unitsPerSession }}</span></div>
+        <div style="display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid #E7E2DC; font-size:14px;"><span style="font-weight:300;">AI Units consommées / mois</span><span style="font-weight:800; color:#101550;">{{ unitsMonth }}</span></div>
+        <div style="display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid #E7E2DC; font-size:14px;"><span style="font-weight:300;">Quota offert <span style="color:#63615E;">(20 000 × {{ prods }} prod)</span></span><span style="font-weight:800; color:#101550;">− {{ quota }}</span></div>
+        <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0 0; font-size:16px;"><span style="font-weight:600; color:#101550;">AI Units facturables / mois</span><span style="font-weight:800; color:#F36145;">{{ billable }}</span></div>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #E7E2DC; border-radius:12px; box-shadow:0 1px 4px rgba(16,21,80,0.08); padding:20px 24px; display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.14em; color:#F36145;">QUOTA</div>
+        <div style="height:10px; border-radius:999px; background:#EFF2FF; overflow:hidden;"><div style="height:100%; width:{{ quotaPct }}; background:{{ quotaColor }}; border-radius:999px;"></div></div>
+        <div style="font-size:13px; font-weight:300; color:#63615E;">{{ quotaMessage }}</div>
+      </div>
+      <div style="font-size:12px; font-weight:300; color:#63615E; line-height:1.5;">Facteurs : Oracle Fusion Service Descriptions, éd. 6 août 2026, Exhibit 1, Table 1 — modifiable par Oracle avec 30 jours de préavis. Le LLM Basique est à 0× sur les actions générales uniquement ; la génération de document reste facturée 10×.</div>
+    </section>
+  </main>
+  <footer style="padding:14px 40px; font-size:12px; font-weight:300; color:#63615E; border-top:1px solid #E7E2DC;">Confidentialité : Document confidentiel © SQORUS / Diffusion externe interdite</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { users: 2000, sessions: 1, prods: 1, llm: 'premium', pctGen: 90, tokens: 60000 };
+  renderVals() {
+    const s = this.state;
+    const F = { basic: { gen: 0, doc: 10 }, premium: { gen: 5, doc: 20 }, byo: { gen: 3, doc: 10 } };
+    const f = F[s.llm];
+    const pctDoc = 100 - s.pctGen;
+    const incGen = Math.ceil((s.tokens * s.pctGen / 100) / 10000);
+    const incDoc = Math.ceil((s.tokens * pctDoc / 100) / 10000);
+    const unitsPerSession = incGen * f.gen + incDoc * f.doc;
+    const sessionsMonth = s.users * s.sessions * 21.7;
+    const unitsMonth = sessionsMonth * unitsPerSession;
+    const quota = 20000 * s.prods;
+    const billable = Math.max(0, unitsMonth - quota);
+    const costMonth = billable * 0.01;
+    const n = (v, d = 0) => v.toLocaleString('fr-FR', { maximumFractionDigits: d, minimumFractionDigits: d });
+    const usd = (v) => n(v, 0) + ' $';
+    const pct = quota > 0 ? Math.min(100, unitsMonth / quota * 100) : 100;
+    const btn = (on) => ({ border: on ? '#101550' : '#D9D2C9', bg: on ? '#101550' : '#FFFFFF', color: on ? '#FFFFFF' : '#101550' });
+    const b = btn(s.llm === 'basic'), p = btn(s.llm === 'premium'), y = btn(s.llm === 'byo');
+    const pm = btn(s.tokens === 60000), pa = btn(s.tokens === 440000);
+    const num = (k, parse = parseFloat) => (e) => this.setState({ [k]: parse(e.target.value) });
+    return {
+      users: s.users, usersLabel: n(s.users), sessions: s.sessions, sessionsLabel: n(s.sessions, 1), prods: s.prods,
+      pctGen: s.pctGen, pctDoc, tokens: s.tokens, tokensLabel: n(s.tokens) + ' tokens',
+      fGen: f.gen, fDoc: f.doc,
+      setUsers: num('users', parseInt), setSessions: num('sessions'), setProds: num('prods', parseInt), setPctGen: num('pctGen', parseInt), setTokens: num('tokens', parseInt),
+      setLlmBasic: () => this.setState({ llm: 'basic' }), setLlmPremium: () => this.setState({ llm: 'premium' }), setLlmByo: () => this.setState({ llm: 'byo' }),
+      presetMulti: () => this.setState({ tokens: 60000 }), presetAgentic: () => this.setState({ tokens: 440000 }),
+      llmBasicBorder: b.border, llmBasicBg: b.bg, llmBasicColor: b.color,
+      llmPremiumBorder: p.border, llmPremiumBg: p.bg, llmPremiumColor: p.color,
+      llmByoBorder: y.border, llmByoBg: y.bg, llmByoColor: y.color,
+      presetMultiBorder: pm.border, presetMultiBg: pm.bg, presetMultiColor: pm.color,
+      presetAgenticBorder: pa.border, presetAgenticBg: pa.bg, presetAgenticColor: pa.color,
+      sessionsMonth: n(sessionsMonth), unitsPerSession: n(unitsPerSession), unitsMonth: n(unitsMonth), quota: n(quota), billable: n(billable),
+      costMonth: usd(costMonth), costYear: usd(costMonth * 12),
+      quotaPct: pct.toFixed(1) + '%', quotaColor: unitsMonth > quota ? '#F36145' : '#1B8AF3',
+      quotaMessage: unitsMonth > quota ? `Quota dépassé : ${n(unitsMonth / quota, 1)}× le volume offert.` : `${n(pct, 0)} % du quota offert consommé — aucune facturation.`
+    };
+  }
+}
+</script>
+</body>
+</html>
